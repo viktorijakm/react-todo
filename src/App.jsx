@@ -17,6 +17,6 @@ const App = () => (
 //     <label htmlFor="search">Search:</label>
 //     <input id="search" type="text" />
 //   </div>
-// );
+// ); for later
 
 export default App;
