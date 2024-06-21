@@ -1,46 +1,22 @@
 import * as React from "react";
+import TodoList from "./TodoList.jsx";
+import AddTodoForm from "./AddTodoForm.jsx";
 
-const todolist = [
-  {
-    title:" Drink water",
-    objectID: 0,
-    id: "First:",
-  },
-  {
-    title: " Eat healthy food",
-    objectID: 1,
-    id:"Second:",
-  },
-  {
-  title: " Physical activity",
-  objectID: 2,
-  id:"Third:",
-},
-];
+const App = () => (
+  <div>
+    <h1>Todo List</h1>
+    {/* <Search /> */}
+    <AddTodoForm /> {/* add form refactored*/}
+    <hr />
+    <TodoList /> {/*todo list refactored */}
+  </div>
+);
 
-function App() {
-  return (
-    <div>
-      <h1>Todo List</h1>
-
-      <label htmlFor="search">Search:</label>
-      <input id="serach" type="text" />
-
-      <hr />
-
-      <ul>
-        {todolist.map(function (item) {
-          return (
-            <li key={item.objectID}>
-              <span>{item.id}</span>
-              <span>{item.title}</span>
-            
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-}
+// const Search = () => (
+//   <div>
+//     <label htmlFor="search">Search:</label>
+//     <input id="search" type="text" />
+//   </div>
+// ); for later
 
 export default App;
