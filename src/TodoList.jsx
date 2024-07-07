@@ -1,32 +1,15 @@
 import * as React from "react";
+import TodoListItem from "./TodoListItem.jsx";
 
-const list = [
-  {
-    title: " Drink water",
-    objectID: 0,
-    id: "First:",
-  },
-  {
-    title: " Eat healthy food",
-    objectID: 1,
-    id: "Second:",
-  },
-  {
-    title: " Physical activity",
-    objectID: 2,
-    id: "Third:",
-  },
-];
-
-const TodoList = () => (
-  <ul>
-    {list.map((item) => (
-      <li key={item.objectID}>
-        <span>{item.id}</span>
-        <span>{item.title}</span>
-      </li>
-    ))}
-  </ul>
+const TodoList = ({ list, title }) => (
+  <div>
+    <h2>{title}</h2>
+    <ul>
+      {list.map((item) => (
+        <TodoListItem key={item.id} todo={item} />
+      ))}
+    </ul>
+  </div>
 );
 
 export default TodoList;
