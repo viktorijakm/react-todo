@@ -3,13 +3,14 @@ import TodoList from "./TodoList.jsx";
 import AddTodoForm from "./AddTodoForm.jsx";
 
 const App = () => {
+  /* remove this : 
   const [newTodo, setNewTodo] = React.useState("");
 
   const onAddTodo = (todoTitle) => {
     setNewTodo(todoTitle);
-  };
+  }; */
 
-  const todoList = [
+  const [todoList, setTodoList] = React.useState([
     {
       title: " Drink water",
       id: 1,
@@ -22,16 +23,22 @@ const App = () => {
       title: " Physical activity",
       id: 3,
     },
-  ];
+  ]);
+
+  /* declare new function and use spread operator*/
+  const addTodo = (newTodo) => {
+    setTodoList((prevList) => [...prevList, newTodo]);
+  };
 
   return (
     <div>
       <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={onAddTodo} /> {/* add form refactored*/}
-      <p>New Todo: {newTodo}</p>
+      {/* add form refactored*, after update todoList, then prop value change to assTodo */}
+      <AddTodoForm onAddTodo={addTodo} />
+      {/*remove:  <p>New Todo: {newTodo}</p>*/}
       <hr />
-      <TodoList list={todoList} title={"Healthy habits"} />{" "}
       {/*todo list refactored */}
+      <TodoList list={todoList} title={"Healthy habits"} />{" "}
     </div>
   );
 };
