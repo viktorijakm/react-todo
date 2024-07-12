@@ -1,29 +1,23 @@
-import * as React from "react";
+import React, { useState } from "react";
 import TodoList from "./TodoList.jsx";
 import AddTodoForm from "./AddTodoForm.jsx";
 
 const App = () => {
-  /* remove this : 
-  const [newTodo, setNewTodo] = React.useState("");
-
-  const onAddTodo = (todoTitle) => {
-    setNewTodo(todoTitle);
-  }; */
-
-  const [todoList, setTodoList] = React.useState([
-    {
-      title: " Drink water",
-      id: 1,
-    },
-    {
-      title: " Eat healthy food",
-      id: 2,
-    },
-    {
-      title: " Physical activity",
-      id: 3,
-    },
-  ]);
+  const [todoList, setTodoList] = useState([]);
+  //  React.useState([
+  //   {
+  //     title: " Drink water",
+  //     id: 1,
+  //   },
+  //   {
+  //     title: " Eat healthy food",
+  //     id: 2,
+  //   },
+  //   {
+  //     title: " Physical activity",
+  //     id: 3,
+  //   },
+  // ]);
 
   /* declare new function and use spread operator*/
   const addTodo = (newTodo) => {
