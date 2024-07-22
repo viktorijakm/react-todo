@@ -1,38 +1,22 @@
-import * as React from "react";
+import React from "react";
 import TodoList from "./TodoList.jsx";
 import AddTodoForm from "./AddTodoForm.jsx";
+import useSemiPersistentState from "./assets/hooks/useSemiPersistentState.jsx";
 
 const App = () => {
-  const [newTodo, setNewTodo] = React.useState("");
+  const [todoList, setTodoList] = useSemiPersistentState("savedTodoList", []);
 
-  const onAddTodo = (todoTitle) => {
-    setNewTodo(todoTitle);
+  const addTodo = (newTodo) => {
+    setTodoList((prevList) => [...prevList, newTodo]);
   };
 
-  const todoList = [
-    {
-      title: " Drink water",
-      id: 1,
-    },
-    {
-      title: " Eat healthy food",
-      id: 2,
-    },
-    {
-      title: " Physical activity",
-      id: 3,
-    },
-  ];
-
   return (
-    <div>
+    <>
       <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={onAddTodo} /> {/* add form refactored*/}
-      <p>New Todo: {newTodo}</p>
+      <AddTodoForm onAddTodo={addTodo} />
       <hr />
-      <TodoList list={todoList} title={"Healthy habits"} />{" "}
-      {/*todo list refactored */}
-    </div>
+      <TodoList list={todoList} title={"Healthy habits"} />
+    </>
   );
 };
 
