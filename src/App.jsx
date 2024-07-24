@@ -6,6 +6,22 @@ import useSemiPersistentState from "./assets/hooks/useSemiPersistentState.jsx";
 const App = () => {
   const [todoList, setTodoList] = useSemiPersistentState("savedTodoList", []);
 
+  const [todoList, setTodoList] = useState([]);
+  //  React.useState([
+  //   {
+  //     title: " Drink water",
+  //     id: 1,
+  //   },
+  //   {
+  //     title: " Eat healthy food",
+  //     id: 2,
+  //   },
+  //   {
+  //     title: " Physical activity",
+  //     id: 3,
+  //   },
+  // ]);
+
   const addTodo = (newTodo) => {
     setTodoList((prevList) => [...prevList, newTodo]);
   };
