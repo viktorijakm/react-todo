@@ -4,7 +4,7 @@ import AddTodoForm from "./AddTodoForm.jsx";
 import useSemiPersistentState from "./hooks/useSemiPersistentState.jsx";
 
 const App = () => {
- // const [newTodo, setNewTodo] = React.useState("");
+
   const [todoList, setTodoList] = useSemiPersistentState("savedTodoList", []);
 
   const addTodo = (newTodo) => {
