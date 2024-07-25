@@ -1,10 +1,9 @@
-import React from "react";
+
 import TodoList from "./TodoList.jsx";
 import AddTodoForm from "./AddTodoForm.jsx";
 import useSemiPersistentState from "./assets/hooks/useSemiPersistentState.jsx";
 
 const App = () => {
-  const [todoList, setTodoList] = useSemiPersistentState("savedTodoList", []);
 
   const [todoList, setTodoList] = useState([]);
   //  React.useState([
@@ -29,10 +28,7 @@ const App = () => {
   return (
     <>
       <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={addTodo} />
-      <hr />
-      <TodoList list={todoList} title={"Healthy habits"} />
-    </>
+
   );
 };
 
