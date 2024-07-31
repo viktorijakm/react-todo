@@ -11,6 +11,11 @@ const App = () => {
     setTodoList((prevList) => [...prevList, newTodo]);
   };
 
+  //define the removeTodo
+  const removeTodo = (id) => {
+    setTodoList((prevList) => prevList.filter(todo => todo.id !== id));
+  };
+
   // const todoList = [
   //   {
   //     title: " Drink water",
@@ -31,7 +36,8 @@ const App = () => {
       <h1>Todo List</h1>
       <AddTodoForm onAddTodo={addTodo} />
       <hr />
-      <TodoList list={todoList} title={"Healthy habits"} />
+      {/* removeTodo as prop to TodoList */}
+      <TodoList list={todoList} title={"Healthy habits"} onRemoveTodo={removeTodo}/>
     </>
   );
 };
