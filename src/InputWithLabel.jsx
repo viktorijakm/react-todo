@@ -1,14 +1,14 @@
-import React, {useRef, useEffect} from "react";
+import React, { useEffect, forwardRef} from "react";
 
-const InputWithLabel = ({ id, value, onChange, children, autoFocus}) => {
-  //ref for input element
-  const inputRef = useRef(null);
+const InputWithLabel = forwardRef(({ id, value, onChange, children}, ref) => {
+
 
   //focus the imput element when comp mounts
   useEffect(() => {
-    inputRef.current.focus();
-  },[] );
-  //empty dep. list - effect runs only after initial render
+    if (ref.current) {
+      ref.current.focus();  // Focus on the input
+    }
+    }, [ref] );  //empty dep. list - effect runs only after initial render
 
   return (
     <>
@@ -19,10 +19,10 @@ const InputWithLabel = ({ id, value, onChange, children, autoFocus}) => {
         name={id}
         value={value}
         onChange={onChange}
-        ref={inputRef}
+        ref={ref}
       />
     </>
   );
-};
+});
 
 export default InputWithLabel;

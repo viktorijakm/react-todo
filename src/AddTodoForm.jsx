@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import InputWithLabel from "./InputWithLabel";
 
-const AddTodoForm = ({ onAddTodo }) => {
+const AddTodoForm = ({ onAddTodo , inputRef}) => {
   const [todoTitle, setTodoTitle] = useState("");
 
   //const handleAddTodo = (event) => {
@@ -30,7 +30,7 @@ const AddTodoForm = ({ onAddTodo }) => {
     id="todoTitle" 
     value={todoTitle}
     onChange={handleTitleChange}
-    autoFocus
+    ref={inputRef}
       >
         Title
         </InputWithLabel>
