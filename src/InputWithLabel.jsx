@@ -8,7 +8,7 @@ const InputWithLabel = forwardRef(({ id, value, onChange, children}, ref) => {
     if (ref.current) {
       ref.current.focus();  // Focus on the input
     }
-    }, [ref] );  //empty dep. list - effect runs only after initial render
+    }, [] );  //empty dep. list - effect runs only after initial render
 
   return (
     <>
