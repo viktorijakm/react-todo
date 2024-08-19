@@ -4,7 +4,8 @@ import AddTodoForm from "./AddTodoForm.jsx";
 //import useSemiPersistentState from "./hooks/useSemiPersistentState.jsx";
 
 const App = () => {
-  const initialTodoList = []; // default empty list
+  const initialTodoList =
+    JSON.parse(localStorage.getItem("savedTodoList")) || []; 
   const [todoList, setTodoList] = useState([]); // initialize todolist state
   //using empty array
   //   () => {
