@@ -3,6 +3,10 @@ import TodoList from "./TodoList.jsx";
 import AddTodoForm from "./AddTodoForm.jsx";
 //import useSemiPersistentState from "./hooks/useSemiPersistentState.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './index.css';
+import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeartPulse } from '@fortawesome/free-solid-svg-icons';
 
 const App = () => {
   //const initialTodoList = []; // default empty list
@@ -188,7 +192,7 @@ const App = () => {
           path="/"
           element={
             <>
-              <h1>Todo List</h1>
+              <h1> <FontAwesomeIcon icon={faHeartPulse} /> Todo List</h1>
               {(() => {
                 if (isLoading) {
                   return <p>Loading...</p>;

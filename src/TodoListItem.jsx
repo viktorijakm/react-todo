@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import style from "./OneTodoListItem.module.css";
+
+function OneTodoListItem ({ text }) {
+  return <li className={style.ListItem}>{text}</li>;
+}
 
 const TodoListItem = ({ todo, onRemove, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -41,7 +46,7 @@ const TodoListItem = ({ todo, onRemove, onUpdate }) => {
     );
   } else {
     return (
-      <li>
+      <li className={style.ListItem}>
         <span>{todo.title}</span>
         <button type="button" onClick={handleEdit}>
           Edit
@@ -53,5 +58,7 @@ const TodoListItem = ({ todo, onRemove, onUpdate }) => {
     );
   }
 };
+
+
 
 export default TodoListItem;

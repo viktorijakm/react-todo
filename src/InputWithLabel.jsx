@@ -1,6 +1,6 @@
 import React, { useEffect, forwardRef} from "react";
 
-const InputWithLabel = forwardRef(({ id, value, onChange, children}, ref) => {
+const InputWithLabel = forwardRef(({ id, value, onChange, className,children}, ref) => {
 
 
   //focus the imput element when comp mounts
@@ -12,7 +12,7 @@ const InputWithLabel = forwardRef(({ id, value, onChange, children}, ref) => {
 
   return (
     <>
-      <label htmlFor={id}>{children}</label>
+      <label htmlFor={id} className={className}>{children}</label>
       <input
         id={id}
         type="text"
