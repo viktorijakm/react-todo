@@ -23,6 +23,9 @@ a:hover {
 }
 
 body {
+  background-image:linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("15.sport-fitness-functional-training-background-seamless-doodle-icons-style-pattern.jpg");
+  background-blend-mode: overlay;
+ 
   margin: 0;
   display: flex;
   place-items: center;
@@ -31,13 +34,17 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-family: "Kanit", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 5.5em;
   line-height: 1.1;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
+  margin-left: 1em;
+  border-radius: 8.5px;
+  border: 1.5px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -48,6 +55,7 @@ button {
 }
 button:hover {
   border-color: #646cff;
+  background-color: rgb(181, 231, 65);
 }
 button:focus,
 button:focus-visible {

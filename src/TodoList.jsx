@@ -1,10 +1,15 @@
 import * as React from "react";
 import TodoListItem from "./TodoListItem.jsx";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+ import { faList } from '@fortawesome/free-solid-svg-icons';
+
 
 const TodoList = ({ list, title, onRemoveTodo, onUpdateTodo }) => {
   return (
     <div>
-      <h2>{title}</h2>
+      <h2>
+        <FontAwesomeIcon icon={faList} />   {title}
+        </h2>
       <ul>
         {list.map((item) => (
           //onRemoveTodo to TodoListItem
