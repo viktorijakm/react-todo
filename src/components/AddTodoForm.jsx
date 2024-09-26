@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import InputWithLabel from "./InputWithLabel";
+import PropTypes from "prop-types";
+import InputWithLabel from "./InputWithLabel.jsx";
 import style from "./OneTodoListItem.module.css";
+
 
 const AddTodoForm = ({ onAddTodo, inputRef }) => {
   const [todoTitle, setTodoTitle] = useState("");
 
-  //const handleAddTodo = (event) => {
   const handleTitleChange = (event) => {
     const newTodoTitle = event.target.value;
     setTodoTitle(newTodoTitle);
@@ -13,16 +14,14 @@ const AddTodoForm = ({ onAddTodo, inputRef }) => {
 
   const handleAddTodo = (event) => {
     event.preventDefault();
-    // const todoTitle = event.target.elements.todoTitle.value;
-    // onAddTodo(todoTitle);
-    // event.target.reset();
     const newTodo = {
       title: todoTitle,
-      id: Date.now(),
+      // id: data.id,
     };
 
     onAddTodo(newTodo);
     setTodoTitle("");
+    inputRef.current.focus();
   };
 
   return (
@@ -34,12 +33,16 @@ const AddTodoForm = ({ onAddTodo, inputRef }) => {
         ref={inputRef}
         className={style.title}
       >
-       Title 
-        
+        Title
       </InputWithLabel>
       <button type="submit">Add</button>
     </form>
   );
+};
+
+AddTodoForm.propTypes = {
+onAddTodo: PropTypes.func.isRequired,
+inputRef: PropTypes.object
 };
 
 export default AddTodoForm;

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import style from "./OneTodoListItem.module.css";
+import PropTypes from "prop-types";
 
-function OneTodoListItem ({ text }) {
-  return <li className={style.ListItem}>{text}</li>;
-}
+// function OneTodoListItem ({ text }) {
+//   return <li className={style.ListItem}>{text}</li>;
+// }
 
 const TodoListItem = ({ todo, onRemove, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -30,16 +31,16 @@ const TodoListItem = ({ todo, onRemove, onUpdate }) => {
 
   if (isEditing) {
     return (
-      <li>
+      <li className={style.ListItem}>
         <input
           type="text"
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
         />
-        <button type="button" onClick={handleUpdate}>
+        <button type="button" className={style.listButton} onClick={handleUpdate}>
           Save
         </button>
-        <button type="button" onClick={handleCancel}>
+        <button type="button" className={style.listButton} onClick={handleCancel}>
           Cancel
         </button>
       </li>
@@ -48,10 +49,10 @@ const TodoListItem = ({ todo, onRemove, onUpdate }) => {
     return (
       <li className={style.ListItem}>
         <span>{todo.title}</span>
-        <button type="button" onClick={handleEdit}>
+        <button type="button" className={style.listButton} onClick={handleEdit}>
           Edit
         </button>
-        <button type="button" onClick={handleRemove}>
+        <button type="button" className={style.listButton} onClick={handleRemove}>
           Remove
         </button>
       </li>
@@ -59,6 +60,14 @@ const TodoListItem = ({ todo, onRemove, onUpdate }) => {
   }
 };
 
-
+TodoListItem.propTypes = {
+  todo: PropTypes.shape({
+    id: PropTypes.string.isRequired,   // id is a required number
+    title: PropTypes.string.isRequired // title is a required string
+  }).isRequired,
+  onRemove: PropTypes.func.isRequired,  // onRemove is a required function
+  onUpdate: PropTypes.func.isRequired   // onUpdate is a required function
+};
 
 export default TodoListItem;
+
