@@ -4,18 +4,21 @@ import AddTodoForm from "./AddTodoForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeartPulse } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
-import PropTypes from "prop-types";
 
 const TodoContainer = () => {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sortOrder, setSortOrder] = useState("asc");
   const inputRef = useRef(null);
 
   // Beginning of GET - Fetch data from API
   const fetchData = useCallback(async () => {
     const url = `https://api.airtable.com/v0/${
       import.meta.env.VITE_AIRTABLE_BASE_ID
-    }/${import.meta.env.VITE_TABLE_NAME}`;
+     }/${import.meta.env.VITE_TABLE_NAME}?view=Grid%20view`; // sort by view order - Adding the ?view=Grid%20view
+
+    // sort by Airtable field - Adding the sort[0][field] and sort[0][direction]
+   //   import.meta.env.VITE_AIRTABLE_BASE_ID }/${import.meta.env.VITE_TABLE_NAME}?view=Grid%20view&sort[0][field]=title&sort[0][direction]=asc`; 
 
     const options = {
       method: "GET",
@@ -32,6 +35,21 @@ const TodoContainer = () => {
 
       const data = await response.json();
 
+      // sort with Java Script 
+      data.records.sort((objectA, objectB) => {
+        const titleA = objectA.fields.title.toLowerCase(); 
+        const titleB = objectB.fields.title.toLowerCase();
+  
+        if (sortOrder === "asc") {
+         if (titleA > titleB) return 1; 
+         if (titleA < titleB) return -1;
+        } else {
+          if (titleA < titleB) return 1; 
+          if (titleA > titleB) return -1;
+        return 0; 
+        }
+      });
+
       const todos = data.records
         .filter(record => record.fields.title)
         .map((record) => ({
@@ -45,7 +63,11 @@ const TodoContainer = () => {
     } catch (error) {
       console.log("Fetch Error", error.message);
     }
-  }, []);
+  }, [sortOrder]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
   // End of GET
 
   // Beginning of POST - Function to add a new todo to Airtable and update the todoList
@@ -195,6 +217,10 @@ const TodoContainer = () => {
         {" "}
         <FontAwesomeIcon icon={faHeartPulse} /> Todo List
       </h1>
+      <button onClick={() => setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"))}>
+        Let's Sort it Out ({sortOrder === "asc" ? "Ascending" : "Descending"})
+      </button>
+
       {(() => {
         if (isLoading) {
           return <p>Loading...</p>;
