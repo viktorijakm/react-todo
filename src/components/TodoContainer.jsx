@@ -215,7 +215,7 @@ const TodoContainer = () => {
     <>
       <h1>
         {" "}
-        <FontAwesomeIcon icon={faHeartPulse} /> Todo List
+        <FontAwesomeIcon icon={faHeartPulse} /> Energize
       </h1>
       <button onClick={() => setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"))}>
         Let's Sort it Out ({sortOrder === "asc" ? "Ascending" : "Descending"})
@@ -231,7 +231,7 @@ const TodoContainer = () => {
               <hr />
               <TodoList
                 list={todoList}
-                title={"Healthy habits"}
+                title={"Awesome habits"}
                 onRemoveTodo={removeTodo}
                 onUpdateTodo={updateTodo}
               />
