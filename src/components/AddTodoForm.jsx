@@ -33,9 +33,9 @@ const AddTodoForm = ({ onAddTodo, inputRef }) => {
         ref={inputRef}
         className={style.title}
       >
-        Title
+        Add this 
       </InputWithLabel>
-      <button type="submit">Add</button>
+      <button type="submit">+ to the list</button>
     </form>
   );
 };
